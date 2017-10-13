@@ -1,0 +1,20 @@
+{
+    "dependencies": {
+    },
+    "devDependencies": {
+        "requirejs": "^2.3.5",
+        "jquery": "^3.2.1",
+        "toastr": "^2.1.2",
+        "knockout": "^3.4.2",
+        "leaflet": "^0.7.3",
+        "requirejs-text": "^2.0.15"
+    },
+    "name": "gba-dataviewer",
+    "private": true,
+    "Repository": "https://github.com/geolba/DataViewer",
+    "scripts": {
+        "buildcss": "node node_modules/requirejs/bin/r.js -o build-styles.js",
+        "buildjs": "node node_modules/requirejs/bin/r.js -o build-scripts.js",
+        "prod": "npm run buildcss & npm run buildjs"
+    }
+}

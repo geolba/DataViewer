@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{522FD866-98F1-4C73-9FA4-306646AFC585}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataViewer</RootNamespace>
+    <AssemblyName>DataViewer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build-scripts.js" />
+    <Content Include="build-styles.js" />
+    <Content Include="content\app.css" />
+    <Content Include="content\concat.min.css" />
+    <Content Include="content\images\layer.png" />
+    <Content Include="content\images\layers-2x.png" />
+    <Content Include="content\images\layers.png" />
+    <Content Include="content\images\marker-icon-2x.png" />
+    <Content Include="content\img\add.png" />
+    <Content Include="content\img\home-spinner.gif" />
+    <Content Include="content\img\home.png" />
+    <Content Include="content\img\inactive.png" />
+    <Content Include="content\img\minus.png" />
+    <Content Include="content\img\plus.png" />
+    <Content Include="content\img\refresh.png" />
+    <Content Include="content\img\remove.png" />
+    <Content Include="content\img\favicon.ico" />
+    <Content Include="content\page-layout.css" />
+    <Content Include="dist\build.txt" />
+    <Content Include="dist\buildconfig.js" />
+    <Content Include="dist\config.js" />
+    <Content Include="dist\i18n.js" />
+    <Content Include="dist\jquery.js" />
+    <Content Include="dist\ko.js" />
+    <Content Include="dist\leaflet.js" />
+    <Content Include="dist\require.js" />
+    <Content Include="dist\text.js" />
+    <Content Include="dist\toastr.js" />
+    <Content Include="Models\ThesaurusModel.sql" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <EntityDeploy Include="Models\ThesaurusModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ThesaurusModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ThesaurusModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ThesaurusModel.edmx</DependentUpon>
+      <LastGenOutput>ThesaurusModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ThesaurusModel.edmx.diagram">
+      <DependentUpon>ThesaurusModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ThesaurusModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ThesaurusModel.edmx</DependentUpon>
+      <LastGenOutput>ThesaurusModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="package.json" />
+    <Content Include="config\ConnectionStrings.config.debug">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\ConnectionStrings.config.release">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\DataViewer_SrvArcgis.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="scripts\app\app.js" />
+    <Content Include="scripts\app\dataservice.js" />
+    <Content Include="scripts\app\map2.js" />
+    <None Include="Properties\PublishProfiles\DataViewer_SrvHttp.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="scripts\config.js" />
+    <Content Include="scripts\buildconfig.js" />
+    <Content Include="scripts\main.js" />
+    <Content Include="scripts\plugins\DynamicMapLayer.js" />
+    <Content Include="scripts\plugins\HomeButton.js" />
+    <Content Include="scripts\plugins\MyZoom.js" />
+    <Content Include="scripts\viewmodel\model.js" />
+    <Content Include="scripts\helper\utilities.js" />
+    <Content Include="scripts\i18n.js" />
+    <Content Include="scripts\nls\de\template.js" />
+    <Content Include="scripts\nls\template.js" />
+    <Content Include="scripts\helper\logger.js" />
+    <Content Include="scripts\viewmodel\FilterViewModel.js" />
+    <Content Include="scripts\viewmodel\FilterListViewModel.js" />
+    <Content Include="tdv\Index.aspx" />
+    <Content Include="tdv\DatabaseNotFound.aspx" />
+    <Content Include="tdv\TermNotFound.aspx" />
+    <Content Include="tdv\TermNotSpecified.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="app\App.cs" />
+    <Compile Include="app\CollectionsExtensions.cs" />
+    <Compile Include="app\Dictionary.cs" />
+    <Compile Include="app\FeatureDbo.cs" />
+    <Compile Include="app\UriFilter.cs" />
+    <Compile Include="app\TermNotFoundException.cs" />
+    <Compile Include="app\TermNotSpecifiedException.cs" />
+    <Compile Include="Models\GE_CompositionPart.cs">
+      <DependentUpon>ThesaurusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GE_GeologicEvent.cs">
+      <DependentUpon>ThesaurusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GE_GeologicFeature.cs">
+      <DependentUpon>ThesaurusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GE_GeologicUnit.cs">
+      <DependentUpon>ThesaurusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThesaurusContext.cs" />
+    <Compile Include="Models\ThesaurusModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThesaurusModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThesaurusModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThesaurusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThesaurusModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThesaurusModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\THESAURUS_concept.cs">
+      <DependentUpon>ThesaurusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\THESAURUS_geosciml.cs">
+      <DependentUpon>ThesaurusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tdv\AttributeHandler.ashx.cs">
+      <DependentUpon>AttributeHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="app\Filter.cs" />
+    <Compile Include="tdv\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tdv\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="app\Item.cs" />
+    <Compile Include="app\LidItem.cs" />
+    <Compile Include="tdv\DatabaseNotFound.aspx.cs">
+      <DependentUpon>DatabaseNotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tdv\DatabaseNotFound.aspx.designer.cs">
+      <DependentUpon>DatabaseNotFound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tdv\TermNotFound.aspx.cs">
+      <DependentUpon>TermNotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tdv\TermNotFound.aspx.designer.cs">
+      <DependentUpon>TermNotFound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tdv\TermNotSpecified.aspx.cs">
+      <DependentUpon>TermNotSpecified.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tdv\TermNotSpecified.aspx.designer.cs">
+      <DependentUpon>TermNotSpecified.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tdv\AttributeHandler.ashx" />
+    <Content Include="scripts\plugins\Request.js" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11657</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:11666/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
