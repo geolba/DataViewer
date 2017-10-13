@@ -1,0 +1,525 @@
+﻿html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input, hr {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, th, a {
+    font-weight: normal;
+    font-style: normal;
+    font-family: Arial;
+    /*color: #fff;*/
+}
+
+/* Temp styles */
+#mainWindow {
+    height: 100%;
+    width: 100%;
+}
+
+.content, .sidebar, .footer {
+    border-top: none;
+}
+
+/* Core styles */
+.header {
+    position: relative; /* needed for stacking */
+    background-color: white;
+    height: 10%;
+    width: 100%;
+}
+
+.content {
+    position: relative; /* needed for stacking */   
+    height: 100%;
+     /*height: 90%;*/  
+    /*background-color:red;*/
+    width: 100%;    
+    overflow: auto;
+}
+
+.sidebar {
+    position: relative; /* needed for stacking */
+    /*width: 20%;*/
+    height: 100%;
+    border-top: none;
+}
+
+.sidebar.left {    
+    background-color: rgb(244,244,244);
+    float: left;
+    border-left: none; 
+    width: 250px;
+    height: 100%;
+    overflow-y: auto;
+}
+#left-bar{
+    position:absolute;
+    height:auto;
+    width:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    margin:15px;      
+}
+
+.sidebar.right {   
+    border: none;
+    margin-left: 250px;      
+    background-color:white;      
+}
+
+#left-bar span.indexheader{  
+    color: #a9a9a9;
+    font-weight:bold;  
+    font-size: 17px;
+     display: block;
+}
+#left-bar .filterViewModelName{
+    /*width:300px;*/
+    /*color: rgb(169,169,169);*/
+    color:black;
+    margin-top: 10px;
+    margin-bottom:2px;
+    /*font-weight:600;*/
+    font-size:12px;
+    display: block;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+#right-bar h3 a {
+    color: #444444;
+    font-size: 16px;
+    padding-bottom: 5px;
+    text-decoration: none;
+}
+
+#right-bar h1 a {
+    color: white;   
+}
+#right-bar h2 a{
+    color:white;
+    text-decoration: none;
+}
+#right-bar h1{
+    background-color: #0099cc;
+    color: white;
+	font-weight:100;
+	padding-left: 15px;
+	padding-bottom: 5px;
+	padding-top: 6px;
+}
+#searchresultsheader h1, .indexheader #indexheader, #fulltextheader h1{
+    color: #FFF;
+    background-color: #0099cc;
+    padding: 10px;
+    margin: 0;
+}
+
+#right-bar h1.indexheader{
+    color: #FFF;
+	padding-top: 7px;
+	padding-bottom: 7px;
+    background-color: #0099cc;
+    margin: 0;   
+}
+
+
+#div_map {
+    position: relative;
+    height: 55%;
+    width: 100%;
+  
+   /*padding:5px;*/
+}
+
+#map {
+    /*display: block;*/
+    position:absolute;
+    height:auto;
+    width:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    margin:10px;  
+    background-color: rgb(253,253,253);
+      /*background-color: rgba(200, 225, 255, 0.1);*/   
+}
+#div_overview {
+    position: relative;
+     height: 45%;
+    width: 100%;
+    overflow: auto;   
+}
+#overview {  
+    position:absolute;
+    height:auto;
+    width:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    margin:10px;       
+}
+
+.footer {
+    position: relative; /* needed for stacking */
+    width: 100%;
+    height: 10%;
+    /*min-width:960px;*/
+    background-color: #555555;
+    color: #ccc;
+    font-size: 11px;
+    padding-top: 25px;
+}
+
+.footerContent {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+
+
+
+/** loading div layout */
+.loading {
+    position: absolute;
+    z-index: 65536;
+}
+
+.loading-content {
+    width: 100%;
+    min-height: 75px;
+    height: 100%;
+     background: rgb(160, 160, 160);
+    background: rgba(160, 160, 160, 0.5);
+    text-align: center;
+    color: rgb(240, 240, 240);
+    font-size: 25px;
+}
+
+.term-name {
+    display:inline-block;
+    margin: 0;
+    color: black;
+    font-size: 12px;
+    font-weight:bold;
+    height:24px;
+     line-height:24px;
+}
+.term-name2 {   
+    color: black;   
+    font-size: 11px;
+   
+}
+
+
+#right-bar a{
+    /*color: #0099cc;*/
+	text-decoration:none;
+}
+.unactivegbaterm {   
+    /*color: rgb(191,191,191);*/
+    color: #bfbfbf;
+    /*border: 1px solid rgb(200, 210, 255);*/
+    padding: 4px;
+    /*background: rgba(200, 225, 255, 0.1);*/
+    display: inline-block;
+    margin: 1px 0 1px 0;
+    /*border-radius: 2px;*/
+}
+
+.gbaterm {   
+    color: #0099cc;
+    border: 1px solid rgb(200, 210, 255);
+    padding: 4px;
+    background: rgb(220, 225, 255);
+    display: inline-block;
+    margin: 1px 0 1px 0;
+    border-radius: 2px;
+}
+.middlegbaterm {   
+    /*color: rgb(191,191,191);*/  
+
+    color: #bfbfbf;
+    border: 1px solid rgb(200, 210, 255);
+    padding: 4px;
+    /*background: rgba(200, 225, 255, 0.1);*/
+    display: inline-block;
+    margin: 1px 0 1px 0;
+    /*border-radius: 2px;*/
+}
+.nogbaterm {
+     color: #0099cc;
+   border: 1px solid rgb(200, 210, 255);
+    padding: 4px;
+    background: rgb(220, 225, 255);
+    display: inline-block;
+    margin: 1px 0 1px 0;
+    border-radius: 2px;
+    cursor: default;
+}
+
+
+/*-------------------------------------------------- */
+/* lists in the left bar */
+/*-------------------------------------------------- */
+.overflowing {
+    color: #444444;
+    list-style:none;
+}
+.overflowing span {
+    color: #444444;
+    font-style: italic;
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+ul.filterItems li{
+     min-height: 15px;
+    color: #444;
+    font-size:12px;  
+
+    list-style-type:disc;
+    /*list-style-position:inside;*/
+    /*
+     * We want the bullets outside of the list,
+     * so the text is aligned. Now the actual bullet
+     * is outside of the list’s container
+     */
+     list-style-position: outside;
+      /*
+     * Because the bullet is outside of the list’s
+     * container, indent the list entirely
+     */
+    margin-left: 1em;
+}
+.filterItems.limited  li:nth-of-type(1n+6){
+    display: none;
+}
+  
+ul.filterItems .active { 
+    background-color: lightgray;  
+}
+
+/*ul.filterItems li.hover{
+    background-color: yellow;   
+}*/
+
+/*ul.filterItems li.hover .firstLabel,
+ul.filterItems li.hover a{   
+     color: #0099cc;
+     cursor:pointer;
+}*/
+
+/*ul.filterItems span.hover {   
+     color: #0099cc;
+     cursor:pointer;
+}*/
+ul.filterItems li a:hover {   
+     color: #0099cc;
+     cursor:pointer;
+}
+
+/* Relativer Tooltip */
+.tooltip {
+    position: relative;
+    text-decoration: none;
+    font-weight:bolder;
+    color: #444444;
+    cursor: pointer;
+    overflow: visible;
+    font-size: 8px;
+}
+
+/*-------------------------------------------------- */
+/*Identfy response list*/
+/*-------------------------------------------------- */
+.identifyList {
+    list-style-type: none;
+    width: 230px;
+}
+
+.identifyList li {
+    font-size: 12px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+
+
+/* -------------------------------------
+CSS for Checkbox Type-1
+---------------------------------------- */
+input[type=checkbox].css-checkbox {
+      position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height:1px; 
+    width:1px; 
+    /*margin:-1px;*/ 
+    padding:0;
+    border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:25px;  
+    height:24px;
+	display:inline-block;
+	/*line-height:15px;*/
+    line-height:24px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	/*font-size:15px;*/
+    font-size:12px;
+    font-weight:bold;
+	vertical-align:middle;
+    cursor:pointer;   
+     color: #bfbfbf;
+     /*background-image:url('img/add.png');*/
+     background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAAn1BMVEXMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzJycnLy8v////c3Nzn5+fp6en8/PzNzc3KysrOzs7l5eXGxsbR0dHa2trg4ODz8/PMzMzX19fw8PDd3d3m5ubu7u7y8vL7+/v09PTb29vk5OTY2NiyHSPoAAAAGXRSTlP0yb3mvngEyOd/6BbFrZrAlcoXt/Hp89A1KxYHDAAAAJBJREFUGNN1kEcOwzAMBJnee6Wo6p5e//+2BJIdCAq8lx3MgSAJ3cG44aU3HUHnEGQC7ZIYYw6GpTLvosiNxT40beOZSKDFVqU40cVTBjHJiOIE0TjFjpxnguiafVtbZW70yz1ioVJOsVxKcSJ6CClj/Tce65eoUU+lXpWauWN1mkaONjAPP7GA5WoNXra7/Qf12yWALFrgcgAAAABJRU5ErkJggg==') /*img/add.png*/;
+     
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    /*background-position: 0 -15px;*/
+    color:black;
+    opacity:1;
+    cursor:pointer;
+    /*background-image:url('img/remove.png');*/
+    background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAABGlBMVEUAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcwAmcz///8AmcwAl8sAmMsAmMwAlssAlcoAk8kAlsoAlMkMm80NnM0OnM4Pnc4Sns4SoNAAkskDl8sEl8sFmcwGm80AksgAkccAkch1x+R6yeV7yuWAzOaCzeZzx+MClssTns8Tn88TodAfpdIwq9VFtNlGtdpItdpKttpNt9tXvN5yx+ODzeaHz+eN0uiQ0+mX1uqY1uqd2Oui2u2w4O+x4O+04fC65PG75PHA5vPC5/PK6vTK6vXl9frm9frw+fzy+vz1+/33/P74/P78/v79/v8Cl8vxGPkTAAAAGHRSTlMCEB0+cHKNm6W5vL2+wMPP2ubn6On4+vtKR3RrAAAAy0lEQVR4Xl3M5XLDMBSEUSXlJinDXpEdZk6ZmZnp/V8jVxO7k/H3Yz1zJFmIsanEUNPjMTFKkSZFIkqLIsmrjdH8MVLxLrhbOt07SWsqHV1XJdG8o78u0PHqh5+4yagBrZ8DWNv/Ah5zAWl7xvYL3GdM8JCUPf1hvM36FBI1976Z2g36p9LuO1zHng7IHHwAD5dsrUpA5TvgKe9dAK+bckBy4/mlYJW9etvxw3/5xS3LJ7VtXqYUcVK6VcbtkpigSLMiPrO8OtTK3Egf1HcmSFPcuygAAAAASUVORK5CYII=');
+}
+
+input[type=checkbox].css-checkbox:disabled + label.css-label { 
+     color: #bfbfbf;
+     /*background-image:url('img/inactive.png');*/
+     background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAIcKAACMDQABBbcAAIDoAABSBQABFVsAADavAAAfQQLQ3GkAAABpSURBVHja7NShEcIwAIXhLyEetsCzAKJdghlqWKCWEdqFkLnD0HF6YFiANKIi/wDfPfVCzvmECR2S//rgjSFhxE15V8wRF9s7x9+8ra21IFGlGtSgWlDYE3SIeFaAXgkPHNEXHtuC+3cA0zcPcDfWW3gAAAAASUVORK5CYII=') /*img/inactive.png*/;
+     cursor:default;
+}
+
+
+/* layers control */
+.gbamap .leaflet-control-layers {
+    box-shadow: none;  
+    background: #fff;
+    border-radius: 0;
+}
+
+.gbamap .leaflet-control-layers-toggle {
+    /*background-image: url(images/layer.png);*/
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAABLFBMVEWZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmVlZWWlpaXl5eYmJjT09P///+ZmZmdnZ2qqqq3t7fOzs7Pz8/Q0NDR0dHS0tKTk5PU1NTV1dWUlJTKysrMzMzNzc2kpKSlpaWpqambm5uvr6+xsbGioqK+vr7W1tbh4eHi4uLw8PD29vb4+Pj7+/v8/PygoKDY2NjIyMiurq6SkpKwsLCjo6OysrK0tLS1tbW2tracnJy4uLjLy8vZ2dna2trc3Nzf39+6urq8vLzj4+Pl5eXm5ubo6Ojp6enq6uqRkZHz8/P19fW/v7/39/fAwMDCwsKnp6f9/f3+/v6enp7FxcXGxsaampqfn5/Dw8PhTh9TAAAAFHRSTlMAAk9hdXZ+t8fJytPY3N/i7O3v8vSJ2KIAAAFdSURBVHhehZPlcuswEEadpk0Z0orNGGSGMjMz9973f4fGkI7G47rnlzRn9WlntBISqcWVX5hLCsI4i2FMWIjTk8JynJ4R0vwWOQ7i91O8RmZVXRVNHKmxKa62KW3VmIl5HUj20KIeVzJ0QtqB8jX9oVF2AKcBqJxTnrcjyYSBho50TMP0SN5ErsZFu0cjeMzmsasVGk3vCbrhwMsO0yWbwG8NOJVG+ORh0YSjztFtf9Dm7Z36tY6DzjHon6qq0eyM5P2JpuV29iD29L9dxTZ0TSGXXVd2mrqi64Z9UBE9vW/buoum2Dev3QtD0T3qZAN54S//CfEL1EFd0bylZdSqfjiDSPq0ggJfEvJcgOjnSSArZ4b3BxDrQ0KQfzEMSts5v4DYmTUGw+OAwbusWsOOs1slgCOGCYP+maHKoi95HYBgoQp9GejQICPEeKb/+gYT8Z8okZpPR7M0mxS+AQ3gZKp5dNfSAAAAAElFTkSuQmCC') /*images/layer.png*/;
+    /*width: 36px;
+    height: 36px;*/
+    width: 30px; height:30px;
+}
+
+.gbamap .leaflet-retina .leaflet-control-layers-toggle {
+    /*background-image: url(images/layers-2x.png);*/
+    background-size: 26px 26px;
+}
+
+/* zoom control */
+.my-leaflet-control-zoom {
+	border-radius: 4px;   
+	}
+.my-leaflet-control-zoom a {
+    display: block; 
+      height: 30px;
+    width: 31px;   
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+/*.my-leaflet-control-zoom a:hover {	
+    background-color: rgba(102,102,102,0.90);   
+	}*/
+.my-leaflet-control-zoom-in {
+	/*background-image: url(img/minus.png);*/	
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAxlBMVEWZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZn///+VlZWYmJiZmZmWlpaXl5fw8PDk5OT6+vrm5uarq6uampqkpKTn5+egoKD7+/vy8vLl5eX5+fng4OCenp6SkpKcnJz8/PydnZ3x8fGxsbGtra2mpqbh4eGioqL9/f3r6+ufn5+qqqqhoaGoqKjs7Oybm5uUlJSWaKJBAAAAGnRSTlPk+cftAOPvgvgGkut0WrvJytuzaf1Fbc/EUVDNfwkAAADBSURBVHhetdLFssMwDIZRNU3xIoMMYSzjZXr/l6q1izO1dv1Wmjk7zQ+j8VnneEM492GgmC6gx/El9Dm+gi7Hns1CCO3mbLfdptLFclkjFsLNIeLkBCxNwR/xv6RsztamZblBTNSaslj/hDX1jrja0PHxGTT5C+3i0uK0xZXFwT5KTEWFOJ3QNZvLBiupTUKFiNFCU6f4Gs/0FoZ/4/jVwdRbnn8rNwemNjN5/JCv4YbjW7hj9P4B/McnOF7v+cU/AEI2X3dttU52AAAAAElFTkSuQmCC'); 
+	margin-bottom: 2px;
+	}
+.my-leaflet-control-zoom-out {
+	/*background-image: url(img/plus.png);*/
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAfCAMAAADHso01AAAAhFBMVEWZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmYmJiZmZmXl5efn5+6urr////+/v6srKybm5uUlJStra319fW5ubmgoKCVlZW2tra9vb35+fm4/JSJAAAAGnRSTlN7x4/tAMjuGSy2aIteC+AWupAw5c4edI5nD8z6iFwAAAB3SURBVHhe3dK3DoQwDIBhB8KFfr2Z3q+8//uxEJYQZ2DLv36yZMkGLkLQFCcc/DTTxo4QZEQRuBQzOFDsGaZtYOzWNhiLsVz6tqjwp69k/yJXuaklDwobp/PpJytbJDe34ST7PtXEJ4rPcLnq9SaA3x/Ods/Xm8/EaFl6wRVnDgAAAABJRU5ErkJggg==');	
+	}
+
+/* home control */
+.leaflet-control-home a {    
+    width: 30px;
+    height: 30px;  
+    /*background-color: rgba(102,102,102,0.80);*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;  
+    border-radius: 5px;       
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAABDlBMVEWZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmXl5f///+VlZWZmZmWlpaUlJSYmJiSkpKampqzs7O3t7fMzMyTk5O2trarq6uysrLR0dHY2Njb29v8/PyMjIy4uLi5ubm6urq1tbSbm5uhoaGmpqanp6eoqKi7u7u+vr7BwcHFxcXGxsbHx8fIyMjJycmpqanNzc3Ozs7Pz8/Q0NCNjY3S0tLT09PV1dXW1tavr6/Z2dmxsbHc3Nzd3d3i4uLn5+fv7+/w8PD39/f5+fn7+/uPj4/9/f3+/v6QkJA5Pja9AAAAGnRSTlMABUdVVmxucX6MtLvHycrN2Nzi4+vs7e/3+OshyJcAAAECSURBVHherdLFcsQwEEXRDjLDJOkWGYcnzMzM/P8/Eo8V18i4yl091alSaSGAgclSdnMTPQB9vKBumCriYZg3j0qKGI9DyVRxVPVNHjVZyTN6u/VzGFmNiN4di3NmWWiw1itq9+Faoux5WxhjFNeka660grkkTUZxQ1Ff7glR2WTEO+rUfI0zqgbFM1moB0rm+BEL+5FS1XzUjOvPlFHdViELx3tKa8M7xr/LW7tpvr/A6Gn+HlHGy/+Xv8Ny+XCzUtmo5/LyD2Ofp7m8LYN9nuZ9gy/1djssd17CVlmwD/Susjbrj2yvhdnJPQbTPEjpeHKPwCAvqBe6hmYXs1uY6YdfRkdtRcSvwdgAAAAASUVORK5CYII=') /*img/home.png*/;   
+     /*opacity : 0.8;*/
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    display: block;
+	}
+.leaflet-control-home a:hover {
+     background-color: rgb(102,102,102);
+    background-color: rgba(102,102,102,0.90);
+	}
+.leaflet-control-home a:active {   
+    background-color: rgb(102,102,102);
+    background-color: rgba(102,102,102,0.60);
+}
+
+/* mouseposition control */
+.leaflet-container .leaflet-control-mouseposition {
+background-color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 0.7);
+box-shadow: 0 0 5px #bbb;
+padding: 0 5px;
+margin:0;
+color: #333;
+font: 11px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+/* leaflet overwrites */
+.gbamap .leaflet-control-attribution{   
+    background: none;
+    font-weight: normal;
+}
+/* Change cursor when mousing over clickable layer */
+/*.leaflet-clickable {
+  cursor: crosshair !important;
+}*/
+/* Change cursor when over entire map */
+.gbamap.leaflet-container {
+  cursor:default;
+}
+
+.gbamap .leaflet-overlay-pane svg {
+ z-index:99999;
+}
+
+
+.leaflet-top .leaflet-control:first-child {
+    margin-top: 0;
+}
+.gbamap .leaflet-right .leaflet-control {
+	margin-right: 0;
+}

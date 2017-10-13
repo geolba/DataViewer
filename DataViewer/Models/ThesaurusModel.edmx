@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ThesaurusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GE_CompositionPart">
+          <Key>
+            <PropertyRef Name="CP_ID" />
+          </Key>
+          <Property Name="CP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GU_ID" Type="int" Nullable="false" />
+          <Property Name="Lithology" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Protolith" Type="varchar" MaxLength="255" />
+          <Property Name="Proportion" Type="varchar" MaxLength="255" />
+          <Property Name="CompositionPartRole" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="GE_GeologicEvent">
+          <Key>
+            <PropertyRef Name="GE_ID" />
+          </Key>
+          <Property Name="GE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GF_ID" Type="int" Nullable="false" />
+          <Property Name="YoungerAge" Type="varchar" MaxLength="255" />
+          <Property Name="OlderAge" Type="varchar" MaxLength="255" />
+          <Property Name="EventProcess" Type="varchar" MaxLength="255" />
+          <Property Name="EventEnvironment" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+          <Property Name="MainAge" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="GE_GeologicFeature">
+          <Key>
+            <PropertyRef Name="GF_ID" />
+          </Key>
+          <Property Name="GF_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="L_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="GeologicCollectionID" Type="int" Nullable="false" />
+          <Property Name="GeologicCollectionTitle" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+          <Property Name="LEGTEXT" Type="nvarchar" MaxLength="500" />
+          <Property Name="DescriptionPurpose" Type="varchar" MaxLength="255" />
+          <Property Name="LEGKURZ" Type="nvarchar" MaxLength="255" />
+          <Property Name="LEG_ID" Type="int" />
+          <Property Name="FEATURE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="GE_GeologicUnit">
+          <Key>
+            <PropertyRef Name="GU_ID" />
+          </Key>
+          <Property Name="GU_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GF_ID" Type="int" Nullable="false" />
+          <Property Name="GeologicUnitType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="GeologicUnitName" Type="varchar" MaxLength="255" />
+          <Property Name="TectonicUnit" Type="varchar" MaxLength="255" />
+          <Property Name="CompoundUnit" Type="bit" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="THESAURUS_concept">
+          <Key>
+            <PropertyRef Name="URI" />
+          </Key>
+          <Property Name="URI" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ThesaurusURI" Type="varchar" MaxLength="255" />
+          <Property Name="PrefLabelDe" Type="nvarchar" MaxLength="255" />
+          <Property Name="PrefLabelEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="DescriptionDe" Type="nvarchar(max)" />
+          <Property Name="DescriptionEn" Type="nvarchar(max)" />
+          <Property Name="HexColor" Type="nvarchar" MaxLength="20" />
+          <Property Name="GbaStatus" Type="nvarchar" MaxLength="255" />
+          <Property Name="PosLong" Type="float" />
+          <Property Name="PosLat" Type="float" />
+          <Property Name="BroaderConceptURI" Type="varchar" MaxLength="2000" />
+          <Property Name="BroaderConceptPrefLabelDe" Type="nvarchar" MaxLength="1000" />
+          <Property Name="BroaderConceptPrefLabelEn" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ConceptSchemeURI" Type="varchar" MaxLength="2000" />
+          <Property Name="ConceptSchemeTitleDe" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ConceptSchemeTitleEn" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TopConceptURI" Type="varchar" MaxLength="2000" />
+          <Property Name="TopConceptPrefLabelDe" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TopConceptPrefLabelEn" Type="nvarchar" MaxLength="1000" />
+          <Property Name="InspireMappingURI" Type="varchar" MaxLength="255" />
+          <Property Name="DBpediaMappingURI" Type="varchar" MaxLength="255" />
+          <Property Name="GeoscimlMappingURI" Type="varchar" MaxLength="255" />
+          <Property Name="BgsMappingURI" Type="varchar" MaxLength="255" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="E_USER" Type="varchar" MaxLength="20" />
+          <Property Name="E_DATUM" Type="datetime" />
+          <Property Name="A_USER" Type="varchar" MaxLength="20" />
+          <Property Name="A_DATUM" Type="datetime" />
+          <Property Name="Notation" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="THESAURUS_geosciml">
+          <Key>
+            <PropertyRef Name="URI" />
+          </Key>
+          <Property Name="URI" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prefLabel_EN" Type="nvarchar" MaxLength="255" />
+          <Property Name="definition_EN" Type="nvarchar(max)" />
+          <Property Name="source_EN" Type="nvarchar(max)" />
+          <Property Name="exactMatch_URI" Type="varchar" MaxLength="255" />
+          <Property Name="inScheme_URI" Type="varchar" MaxLength="255" />
+          <Property Name="DateExported" Type="datetime" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CP_GU">
+          <End Role="GE_GeologicUnit" Type="Self.GE_GeologicUnit" Multiplicity="1" />
+          <End Role="GE_CompositionPart" Type="Self.GE_CompositionPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GE_GeologicUnit">
+              <PropertyRef Name="GU_ID" />
+            </Principal>
+            <Dependent Role="GE_CompositionPart">
+              <PropertyRef Name="GU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GE_GF">
+          <End Role="GE_GeologicFeature" Type="Self.GE_GeologicFeature" Multiplicity="1" />
+          <End Role="GE_GeologicEvent" Type="Self.GE_GeologicEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GE_GeologicFeature">
+              <PropertyRef Name="GF_ID" />
+            </Principal>
+            <Dependent Role="GE_GeologicEvent">
+              <PropertyRef Name="GF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GU_GF">
+          <End Role="GE_GeologicFeature" Type="Self.GE_GeologicFeature" Multiplicity="1" />
+          <End Role="GE_GeologicUnit" Type="Self.GE_GeologicUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GE_GeologicFeature">
+              <PropertyRef Name="GF_ID" />
+            </Principal>
+            <Dependent Role="GE_GeologicUnit">
+              <PropertyRef Name="GF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ThesaurusModelStoreContainer">
+          <EntitySet Name="GE_CompositionPart" EntityType="Self.GE_CompositionPart" Schema="gba" store:Type="Tables" />
+          <EntitySet Name="GE_GeologicEvent" EntityType="Self.GE_GeologicEvent" Schema="gba" store:Type="Tables" />
+          <EntitySet Name="GE_GeologicFeature" EntityType="Self.GE_GeologicFeature" Schema="gba" store:Type="Tables" />
+          <EntitySet Name="GE_GeologicUnit" EntityType="Self.GE_GeologicUnit" Schema="gba" store:Type="Tables" />
+          <EntitySet Name="THESAURUS_concept" EntityType="Self.THESAURUS_concept" Schema="gba" store:Type="Tables" />
+          <EntitySet Name="THESAURUS_geosciml" EntityType="Self.THESAURUS_geosciml" Schema="gba" store:Type="Tables" />
+          <AssociationSet Name="FK_CP_GU" Association="Self.FK_CP_GU">
+            <End Role="GE_GeologicUnit" EntitySet="GE_GeologicUnit" />
+            <End Role="GE_CompositionPart" EntitySet="GE_CompositionPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GE_GF" Association="Self.FK_GE_GF">
+            <End Role="GE_GeologicFeature" EntitySet="GE_GeologicFeature" />
+            <End Role="GE_GeologicEvent" EntitySet="GE_GeologicEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GU_GF" Association="Self.FK_GU_GF">
+            <End Role="GE_GeologicFeature" EntitySet="GE_GeologicFeature" />
+            <End Role="GE_GeologicUnit" EntitySet="GE_GeologicUnit" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ThesaurusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ThesaurusContext" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="GE_CompositionPart" EntityType="ThesaurusModel.GE_CompositionPart" />
+          <EntitySet Name="GE_GeologicEvent" EntityType="ThesaurusModel.GE_GeologicEvent" />
+          <EntitySet Name="GE_GeologicFeature" EntityType="ThesaurusModel.GE_GeologicFeature" />
+          <EntitySet Name="GE_GeologicUnit" EntityType="ThesaurusModel.GE_GeologicUnit" />
+          <EntitySet Name="THESAURUS_geosciml" EntityType="ThesaurusModel.THESAURUS_geosciml" />
+          <AssociationSet Name="FK_CP_GU" Association="ThesaurusModel.FK_CP_GU">
+            <End Role="GE_GeologicUnit" EntitySet="GE_GeologicUnit" />
+            <End Role="GE_CompositionPart" EntitySet="GE_CompositionPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GE_GF" Association="ThesaurusModel.FK_GE_GF">
+            <End Role="GE_GeologicFeature" EntitySet="GE_GeologicFeature" />
+            <End Role="GE_GeologicEvent" EntitySet="GE_GeologicEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GU_GF" Association="ThesaurusModel.FK_GU_GF">
+            <End Role="GE_GeologicFeature" EntitySet="GE_GeologicFeature" />
+            <End Role="GE_GeologicUnit" EntitySet="GE_GeologicUnit" />
+          </AssociationSet>
+          <EntitySet Name="THESAURUS_concept" EntityType="ThesaurusModel.THESAURUS_concept" />
+        </EntityContainer>
+        <EntityType Name="GE_CompositionPart">
+          <Key>
+            <PropertyRef Name="CP_ID" />
+          </Key>
+          <Property Name="CP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GU_ID" Type="Int32" Nullable="false" />
+          <Property Name="Lithology" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Protolith" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Proportion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CompositionPartRole" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GE_GeologicUnit" Relationship="ThesaurusModel.FK_CP_GU" FromRole="GE_CompositionPart" ToRole="GE_GeologicUnit" />
+        </EntityType>
+        <EntityType Name="GE_GeologicEvent">
+          <Key>
+            <PropertyRef Name="GE_ID" />
+          </Key>
+          <Property Name="GE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GF_ID" Type="Int32" Nullable="false" />
+          <Property Name="YoungerAge" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OlderAge" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EventProcess" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EventEnvironment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MainAge" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GE_GeologicFeature" Relationship="ThesaurusModel.FK_GE_GF" FromRole="GE_GeologicEvent" ToRole="GE_GeologicFeature" />
+        </EntityType>
+        <EntityType Name="GE_GeologicFeature">
+          <Key>
+            <PropertyRef Name="GF_ID" />
+          </Key>
+          <Property Name="GF_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="L_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GeologicCollectionID" Type="Int32" Nullable="false" />
+          <Property Name="GeologicCollectionTitle" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LEGTEXT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionPurpose" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LEGKURZ" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GE_GeologicEvent" Relationship="ThesaurusModel.FK_GE_GF" FromRole="GE_GeologicFeature" ToRole="GE_GeologicEvent" />
+          <NavigationProperty Name="GE_GeologicUnit" Relationship="ThesaurusModel.FK_GU_GF" FromRole="GE_GeologicFeature" ToRole="GE_GeologicUnit" />
+          <Property Name="LEG_ID" Type="Int32" />
+          <Property Name="FEATURE_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="GE_GeologicUnit">
+          <Key>
+            <PropertyRef Name="GU_ID" />
+          </Key>
+          <Property Name="GU_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GF_ID" Type="Int32" Nullable="false" />
+          <Property Name="GeologicUnitType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GeologicUnitName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TectonicUnit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CompoundUnit" Type="Boolean" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GE_CompositionPart" Relationship="ThesaurusModel.FK_CP_GU" FromRole="GE_GeologicUnit" ToRole="GE_CompositionPart" />
+          <NavigationProperty Name="GE_GeologicFeature" Relationship="ThesaurusModel.FK_GU_GF" FromRole="GE_GeologicUnit" ToRole="GE_GeologicFeature" />
+        </EntityType>
+        <EntityType Name="THESAURUS_geosciml">
+          <Key>
+            <PropertyRef Name="URI" />
+          </Key>
+          <Property Name="URI" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="prefLabel_EN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="definition_EN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="source_EN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="exactMatch_URI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="inScheme_URI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateExported" Type="DateTime" Precision="3" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CP_GU">
+          <End Type="ThesaurusModel.GE_GeologicUnit" Role="GE_GeologicUnit" Multiplicity="1" />
+          <End Type="ThesaurusModel.GE_CompositionPart" Role="GE_CompositionPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GE_GeologicUnit">
+              <PropertyRef Name="GU_ID" />
+            </Principal>
+            <Dependent Role="GE_CompositionPart">
+              <PropertyRef Name="GU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GE_GF">
+          <End Type="ThesaurusModel.GE_GeologicFeature" Role="GE_GeologicFeature" Multiplicity="1" />
+          <End Type="ThesaurusModel.GE_GeologicEvent" Role="GE_GeologicEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GE_GeologicFeature">
+              <PropertyRef Name="GF_ID" />
+            </Principal>
+            <Dependent Role="GE_GeologicEvent">
+              <PropertyRef Name="GF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GU_GF">
+          <End Type="ThesaurusModel.GE_GeologicFeature" Role="GE_GeologicFeature" Multiplicity="1" />
+          <End Type="ThesaurusModel.GE_GeologicUnit" Role="GE_GeologicUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GE_GeologicFeature">
+              <PropertyRef Name="GF_ID" />
+            </Principal>
+            <Dependent Role="GE_GeologicUnit">
+              <PropertyRef Name="GF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="THESAURUS_concept">
+          <Key>
+            <PropertyRef Name="URI" />
+          </Key>
+          <Property Name="URI" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ThesaurusURI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PrefLabelDe" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PrefLabelEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionDe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HexColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GbaStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PosLong" Type="Double" />
+          <Property Name="PosLat" Type="Double" />
+          <Property Name="BroaderConceptURI" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="BroaderConceptPrefLabelDe" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="BroaderConceptPrefLabelEn" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ConceptSchemeURI" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ConceptSchemeTitleDe" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ConceptSchemeTitleEn" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TopConceptURI" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="TopConceptPrefLabelDe" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TopConceptPrefLabelEn" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="InspireMappingURI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DBpediaMappingURI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GeoscimlMappingURI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BgsMappingURI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="E_USER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="E_DATUM" Type="DateTime" Precision="3" />
+          <Property Name="A_USER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="A_DATUM" Type="DateTime" Precision="3" />
+          <Property Name="Notation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ThesaurusModelStoreContainer" CdmEntityContainer="ThesaurusContext">
+          <EntitySetMapping Name="GE_CompositionPart">
+            <EntityTypeMapping TypeName="ThesaurusModel.GE_CompositionPart">
+              <MappingFragment StoreEntitySet="GE_CompositionPart">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CompositionPartRole" ColumnName="CompositionPartRole" />
+                <ScalarProperty Name="Proportion" ColumnName="Proportion" />
+                <ScalarProperty Name="Protolith" ColumnName="Protolith" />
+                <ScalarProperty Name="Lithology" ColumnName="Lithology" />
+                <ScalarProperty Name="GU_ID" ColumnName="GU_ID" />
+                <ScalarProperty Name="CP_ID" ColumnName="CP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GE_GeologicEvent">
+            <EntityTypeMapping TypeName="ThesaurusModel.GE_GeologicEvent">
+              <MappingFragment StoreEntitySet="GE_GeologicEvent">
+                <ScalarProperty Name="MainAge" ColumnName="MainAge" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="EventEnvironment" ColumnName="EventEnvironment" />
+                <ScalarProperty Name="EventProcess" ColumnName="EventProcess" />
+                <ScalarProperty Name="OlderAge" ColumnName="OlderAge" />
+                <ScalarProperty Name="YoungerAge" ColumnName="YoungerAge" />
+                <ScalarProperty Name="GF_ID" ColumnName="GF_ID" />
+                <ScalarProperty Name="GE_ID" ColumnName="GE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GE_GeologicFeature">
+            <EntityTypeMapping TypeName="ThesaurusModel.GE_GeologicFeature">
+              <MappingFragment StoreEntitySet="GE_GeologicFeature">
+                <ScalarProperty Name="FEATURE_ID" ColumnName="FEATURE_ID" />
+                <ScalarProperty Name="LEG_ID" ColumnName="LEG_ID" />
+                <ScalarProperty Name="LEGKURZ" ColumnName="LEGKURZ" />
+                <ScalarProperty Name="DescriptionPurpose" ColumnName="DescriptionPurpose" />
+                <ScalarProperty Name="LEGTEXT" ColumnName="LEGTEXT" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="GeologicCollectionTitle" ColumnName="GeologicCollectionTitle" />
+                <ScalarProperty Name="GeologicCollectionID" ColumnName="GeologicCollectionID" />
+                <ScalarProperty Name="L_ID" ColumnName="L_ID" />
+                <ScalarProperty Name="GF_ID" ColumnName="GF_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GE_GeologicUnit">
+            <EntityTypeMapping TypeName="ThesaurusModel.GE_GeologicUnit">
+              <MappingFragment StoreEntitySet="GE_GeologicUnit">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CompoundUnit" ColumnName="CompoundUnit" />
+                <ScalarProperty Name="TectonicUnit" ColumnName="TectonicUnit" />
+                <ScalarProperty Name="GeologicUnitName" ColumnName="GeologicUnitName" />
+                <ScalarProperty Name="GeologicUnitType" ColumnName="GeologicUnitType" />
+                <ScalarProperty Name="GF_ID" ColumnName="GF_ID" />
+                <ScalarProperty Name="GU_ID" ColumnName="GU_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THESAURUS_geosciml">
+            <EntityTypeMapping TypeName="ThesaurusModel.THESAURUS_geosciml">
+              <MappingFragment StoreEntitySet="THESAURUS_geosciml">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateExported" ColumnName="DateExported" />
+                <ScalarProperty Name="inScheme_URI" ColumnName="inScheme_URI" />
+                <ScalarProperty Name="exactMatch_URI" ColumnName="exactMatch_URI" />
+                <ScalarProperty Name="source_EN" ColumnName="source_EN" />
+                <ScalarProperty Name="definition_EN" ColumnName="definition_EN" />
+                <ScalarProperty Name="prefLabel_EN" ColumnName="prefLabel_EN" />
+                <ScalarProperty Name="URI" ColumnName="URI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THESAURUS_concept">
+            <EntityTypeMapping TypeName="ThesaurusModel.THESAURUS_concept">
+              <MappingFragment StoreEntitySet="THESAURUS_concept">
+                <ScalarProperty Name="Notation" ColumnName="Notation" />
+                <ScalarProperty Name="A_DATUM" ColumnName="A_DATUM" />
+                <ScalarProperty Name="A_USER" ColumnName="A_USER" />
+                <ScalarProperty Name="E_DATUM" ColumnName="E_DATUM" />
+                <ScalarProperty Name="E_USER" ColumnName="E_USER" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BgsMappingURI" ColumnName="BgsMappingURI" />
+                <ScalarProperty Name="GeoscimlMappingURI" ColumnName="GeoscimlMappingURI" />
+                <ScalarProperty Name="DBpediaMappingURI" ColumnName="DBpediaMappingURI" />
+                <ScalarProperty Name="InspireMappingURI" ColumnName="InspireMappingURI" />
+                <ScalarProperty Name="TopConceptPrefLabelEn" ColumnName="TopConceptPrefLabelEn" />
+                <ScalarProperty Name="TopConceptPrefLabelDe" ColumnName="TopConceptPrefLabelDe" />
+                <ScalarProperty Name="TopConceptURI" ColumnName="TopConceptURI" />
+                <ScalarProperty Name="ConceptSchemeTitleEn" ColumnName="ConceptSchemeTitleEn" />
+                <ScalarProperty Name="ConceptSchemeTitleDe" ColumnName="ConceptSchemeTitleDe" />
+                <ScalarProperty Name="ConceptSchemeURI" ColumnName="ConceptSchemeURI" />
+                <ScalarProperty Name="BroaderConceptPrefLabelEn" ColumnName="BroaderConceptPrefLabelEn" />
+                <ScalarProperty Name="BroaderConceptPrefLabelDe" ColumnName="BroaderConceptPrefLabelDe" />
+                <ScalarProperty Name="BroaderConceptURI" ColumnName="BroaderConceptURI" />
+                <ScalarProperty Name="PosLat" ColumnName="PosLat" />
+                <ScalarProperty Name="PosLong" ColumnName="PosLong" />
+                <ScalarProperty Name="GbaStatus" ColumnName="GbaStatus" />
+                <ScalarProperty Name="HexColor" ColumnName="HexColor" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="DescriptionDe" ColumnName="DescriptionDe" />
+                <ScalarProperty Name="PrefLabelEn" ColumnName="PrefLabelEn" />
+                <ScalarProperty Name="PrefLabelDe" ColumnName="PrefLabelDe" />
+                <ScalarProperty Name="ThesaurusURI" ColumnName="ThesaurusURI" />
+                <ScalarProperty Name="URI" ColumnName="URI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="DefaultDatabaseSchema" Value="gba" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
