@@ -1,13 +1,12 @@
 {
-    "dependencies": {
-    },
+    "dependencies": {},
     "devDependencies": {
-        "requirejs": "^2.3.5",
-        "jquery": "^3.2.1",
-        "toastr": "^2.1.2",
-        "knockout": "^3.4.2",
+        "jquery": "^3.4.1",
+        "knockout": "^3.5.1",
         "leaflet": "^0.7.3",
-        "requirejs-text": "^2.0.15"
+        "requirejs": "^2.3.6",
+        "requirejs-text": "^2.0.15",
+        "toastr": "^2.1.4"
     },
     "name": "gba-dataviewer",
     "private": true,

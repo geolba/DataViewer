@@ -77,7 +77,17 @@
 
             //NEU NEU: query all recursive narrower terms and search if they are in self.filterItems:
             //if there any 
-            self.dataservice.getNarrowerTerms(filterItem.uri, filterItem.endpoint)
+            var protocol = ('https:' === document.location.protocol ? 'https:' : 'http:');
+            var uri, endpoint;
+            if (protocol === 'https:' && filterItem.uri !== null) {
+                uri = filterItem.uri.replace("http://", "https://");
+                endpoint = filterItem.endpoint.replace("http://", "https://");
+            } else {
+                uri = filterItem.uri;
+                endpoint = filterItem.endpoint
+            }
+
+            self.dataservice.getNarrowerTerms(uri, endpoint)
             .then(function (data) {
                 if (data.length <= 0) {
                     self.filterListViewModel.activeFilterViewModelItems.push(self);

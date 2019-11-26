@@ -23,7 +23,7 @@ require.config({
         i18n: "i18n"
     },
     //locale: "de",// _urlParam("lang", window.location.href)? _urlParam("lang", window.location.href) : "en", // getLocale(),
-    urlArgs: "version=release2",
+    urlArgs: "version=release3",
     shim: {
         //jquery: { exports: "$" }, //jquery 1.7.x understands define; no shim needed.
         //'ko': { deps: ['jquery'], exports: 'ko' }, //ko 2.1 understands define; no shim needed

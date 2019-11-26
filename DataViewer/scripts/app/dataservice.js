@@ -444,20 +444,21 @@ define('app/dataservice',[
             var ix = value.lastIndexOf('/');
             var _uri = value.substring(0, ix + 1);
             var endpoint = "";
+            var protocol = ('https:' === document.location.protocol ? 'https:' : 'http:');
             switch (_uri)
             {
 
                 case "http://resource.geolba.ac.at/GeologicUnit/":                  
-                    endpoint = "http://resource.geolba.ac.at/PoolParty/sparql/GeologicUnit";
+                    endpoint = protocol + "//resource.geolba.ac.at/PoolParty/sparql/GeologicUnit";
                     break;
                 case "http://resource.geolba.ac.at/tectonicunit/":                  
-                    endpoint = "http://resource.geolba.ac.at/PoolParty/sparql/tectonicunit";
+                    endpoint = protocol + "//resource.geolba.ac.at/PoolParty/sparql/tectonicunit";
                     break;                 
                 case "http://resource.geolba.ac.at/lithology/":                   
-                    endpoint = "http://resource.geolba.ac.at/PoolParty/sparql/lithology";
+                    endpoint = protocol + "//resource.geolba.ac.at/PoolParty/sparql/lithology";
                     break;
                 case "http://resource.geolba.ac.at/GeologicTimeScale/":                   
-                    endpoint = "http://resource.geolba.ac.at/PoolParty/sparql/GeologicTimeScale";
+                    endpoint = protocol + "//resource.geolba.ac.at/PoolParty/sparql/GeologicTimeScale";
                     break;               
                 default :
                     endpoint = "";

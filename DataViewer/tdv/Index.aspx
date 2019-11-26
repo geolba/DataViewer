@@ -14,7 +14,7 @@
 
     <!--STYLES -->  
   <%--  <link rel="stylesheet" href="../content/app.css?version=release3" />--%>
-     <link rel="stylesheet" href="../content/concat.min.css?version=release2" media="all" /> 
+     <link rel="stylesheet" href="../content/concat.min.css?version=release3" media="all" /> 
 </head>
 <body>  
     <div id="mainWindow">
@@ -149,7 +149,7 @@
     </div>
 
     <!-- Kick it off - data-main attribute tells require.js to load scripts/main.js after require.js loads. -->
-    <%--<script src="../node_modules/requirejs/require.js" data-main="../scripts/config.js"></script>--%> 
+   <%-- <script src="../node_modules/requirejs/require.js" data-main="../scripts/config.js"></script> --%>
     
     <script src="../dist/require.js" data-main="../dist/buildconfig.js"></script>
  

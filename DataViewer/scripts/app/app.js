@@ -17,15 +17,13 @@ define('app/app',[
             logger.error('App initialization failed: no uri parameter', true);
         }
         else {
-            //initialize google analytics:
-            var _gaq = window._gaq = window._gaq || [];
-            _gaq.push(['_setAccount', 'UA-36825195-1']);
-            _gaq.push(['_trackPageview']);
-            //var src = ('https:' === window.document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            //script.get(src);        
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            ////initialize google analytics:
+            //var _gaq = window._gaq = window._gaq || [];
+            //_gaq.push(['_setAccount', 'UA-36825195-1']);
+            //_gaq.push(['_trackPageview']);                 
+            //var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            //ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            //var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 
             //init the sparql data:
             var dataservice = new Dataservice(uri, language);

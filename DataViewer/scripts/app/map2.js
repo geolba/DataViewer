@@ -86,9 +86,11 @@ define('app/map2', [
             });
             basemap_0.addTo(m);
 
+            var protocol = ('https:' === document.location.protocol ? 'https:' : 'http:');
+
             //gba-layer:
             //var mk500 = new L.tileLayer.wms("http://gisgba.geologie.ac.at/arcgis/services/karten_image/is_md_mk500/ImageServer/WMSServer", {
-            var mk500 = new L.tileLayer.wms("http://gisgba.geologie.ac.at/arcgis/services/image/AT_GBA_MGK500/ImageServer/WMSServer", {
+            var mk500 = new L.tileLayer.wms(protocol + "//gisgba.geologie.ac.at/arcgis/services/image/AT_GBA_MGK500/ImageServer/WMSServer", {
                 layers: "0",
                 version: "1.3.0",
                 format: 'image/png',
@@ -98,7 +100,7 @@ define('app/map2', [
             });
             //gba-layer:
             //var gk50 = new L.tileLayer.wms("http://gisgba.geologie.ac.at/arcgis/services/karten_image/is_md_gk50/ImageServer/WMSServer", {
-            var gk50 = new L.tileLayer.wms("http://gisgba.geologie.ac.at/arcgis/services/image/AT_GBA_GK50/ImageServer/WMSServer", {
+            var gk50 = new L.tileLayer.wms(protocol + "//gisgba.geologie.ac.at/arcgis/services/image/AT_GBA_GK50/ImageServer/WMSServer", {
                
                 layers: "0",
                 version: "1.3.0",
@@ -119,7 +121,7 @@ define('app/map2', [
 
             //var url = "http://gisgba.geologie.ac.at/ArcGIS/rest/services/GBATest_V10/MapServer";
             //var url = "http://srv-ags01e.geolba.ac.at/arcgis/rest/services/dataviewer/AT_GBA_DATAVIEWER/MapServer";
-            var url = "http://193.170.253.69/arcgis/rest/services/dataviewer/AT_GBA_DATAVIEWER/MapServer";
+            var url = protocol + "//gisgba.geologie.ac.at/arcgis/rest/services/dataviewer/AT_GBA_DATAVIEWER/MapServer";
             _GE500_GEO_F_2 = new AgsDynamicLayer(url, {
                 opacity: 0.4,
                 layers: [2],
@@ -371,9 +373,10 @@ define('app/map2', [
         var _getPoints2 = function (list, requestList, isLithology) {
             // 1) create the jQuery Deferred object that will be used
             var deferred = $.Deferred();
+            var protocol = ('https:' === document.location.protocol ? 'https:' : 'http:');
          
             //leafletRequest.request("http://gisgba.geologie.ac.at/ArcGIS/rest/services/GBATest_V10/MapServer/0/query",            
-            leafletRequest.request("http://gisgba.geologie.ac.at/arcgis/rest/services/dataviewer/AT_GBA_DATAVIEWER/MapServer/0/query",
+            leafletRequest.request(protocol + "//gisgba.geologie.ac.at/arcgis/rest/services/dataviewer/AT_GBA_DATAVIEWER/MapServer/0/query",
             //leafletRequest.request("http://193.170.253.69/arcgis/rest/services/dataviewer/AT_GBA_DATAVIEWER_31287/MapServer/0/query",
                {
                    f: "json", inSR: 31287,
