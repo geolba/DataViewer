@@ -17,16 +17,16 @@ namespace DataViewer.tdv
         ThesaurusContext db;
         String[] filters;
 
-        static String[] filtersAll = new string[] { "GeologicCollectionTitle", "DescriptionPurpose", "GeologicUnit", "TectonicUnit", "Proportion", "Lithology", "TimeScale", "EventProcess", "EventEnvironment" };
+        static readonly String[] filtersAll = new string[] { "GeologicCollectionTitle", "DescriptionPurpose", "GeologicUnit", "TectonicUnit", "Proportion", "Lithology", "TimeScale", "EventProcess", "EventEnvironment" };
                
         //static String[] filtersLithology = { "Proportion", "GeologicUnit", "TectonicUnit", "TimeScale", "GeologicCollectionTitle" };
-        static String[] filtersLithology = new string[] { "Proportion", "Dataset", "GeologicUnit", "TectonicUnit" };
+        static readonly String[] filtersLithology = new string[] { "Proportion", "Dataset", "GeologicUnit", "TectonicUnit" };
         //static String[] filtersTimeScale = { "EventProcess", "EventEnvironment", "GeologicUnit", "TectonicUnit", "Lithology", "Dataset" };
-        static String[] filtersTimeScale = new string[] { "Dataset", "GeologicUnit", "Lithology", "TectonicUnit", "EventProcess", "EventEnvironment" };
+        static readonly String[] filtersTimeScale = new string[] { "Dataset", "GeologicUnit", "Lithology", "TectonicUnit", "EventProcess", "EventEnvironment" };
         //static String[] filtersGeologicUnit = { "DescriptionPurpose", "EventProcess", "EventEnvironment", "TectonicUnit", "TimeScale", "Lithology", "Dataset" };
-        static String[] filtersGeologicUnit = new string[] { "DescriptionPurpose", "Dataset", "TimeScale", "Lithology", "TectonicUnit", "EventProcess", "EventEnvironment" };
+        static readonly String[] filtersGeologicUnit = new string[] { "DescriptionPurpose", "Dataset", "TimeScale", "Lithology", "TectonicUnit", "EventProcess", "EventEnvironment" };
         //static String[] filtersTectonicUnit = { "GeologicUnit", "Lithology", "TimeScale", "Dataset" };    
-        static String[] filtersTectonicUnit = new string[] { "Dataset", "GeologicUnit", "TimeScale", "Lithology" };  
+        static readonly String[] filtersTectonicUnit = new string[] { "Dataset", "GeologicUnit", "TimeScale", "Lithology" };  
 
         public void ProcessRequest(HttpContext context)
         {
@@ -36,7 +36,7 @@ namespace DataViewer.tdv
             this.db.Configuration.AutoDetectChangesEnabled = false;
                        
             Object data = null;
-            data = readData(context);
+            data = this.ReadData(context);
             this.db.Dispose();  
             if (data != null)
             {
@@ -298,24 +298,25 @@ namespace DataViewer.tdv
            
         }
                
-        private void put(Dictionary<String, Item> dictionary, String uri, String name, String l_id, String description, String proportion)
+        private void Put(Dictionary<String, Item> dictionary, String uri, String name, String l_id, String description, String proportion)
         {
             if (name != null)
             {
-                Item I;
-                if (!dictionary.TryGetValue(name, out I))
+                if (!dictionary.TryGetValue(name, out Item I))
                 {
                     I = new Item();
                 }
                 I.name = name;
                 I.uri = uri;
                 I.description = description;                
-                I.endpoint = getEndpoint(uri);
+                I.endpoint = this.GetEndpoint(uri);
                 //I.proportion = proportion;
 
-                LidItem lidItem = new LidItem();
-                lidItem.l_id = l_id;
-                lidItem.proportion = proportion;
+                LidItem lidItem = new LidItem
+                {
+                    l_id = l_id,
+                    proportion = proportion
+                };
                 bool alreadyExists = I.l_id2.Any(x => x.l_id == l_id);
                 if (alreadyExists == false)
                 {
@@ -330,7 +331,7 @@ namespace DataViewer.tdv
             }
         }
 
-        private string getEndpoint(string uri)
+        private string GetEndpoint(string uri)
         {
             if (uri == null)
             {
@@ -408,7 +409,7 @@ namespace DataViewer.tdv
             return parameter;
         }
 
-        private Object readData(HttpContext context)
+        private Object ReadData(HttpContext context)
         {
             //defining all the dictionaries
             Dictionary<String, Item> GeologicCollectionTitle = new Dictionary<String, Item>();            
@@ -560,19 +561,19 @@ namespace DataViewer.tdv
                 //fill the dictionaries
                 foreach (var feature in features2)
                 {
-                    put(GeologicCollectionTitle, null, feature.GeologicCollectionTitle, feature.L_ID, null, feature.ProportionLbl);
-                    put(DescriptionPurpose, feature.DescriptionPurposeUri, feature.DescriptionPurposeLbl, feature.L_ID, null, feature.ProportionLbl);
-                    put(GeologicUnit, feature.GeologicUnitNameUri, feature.GeologicUnitNameLbl, feature.L_ID, feature.GeologicUnitNameDescription, feature.ProportionLbl);
-                    put(TectonicUnit, feature.TectonicUnitUri, feature.TectonicUnitLbl, feature.L_ID, feature.TectonicUnitDescription, feature.ProportionLbl);
-                    put(Proportion, feature.ProportionUri, feature.ProportionLbl, feature.L_ID, null, feature.ProportionLbl);
-                    put(TimeScale, feature.AgeUri, feature.AgeLbl, feature.L_ID, feature.AgeDescription, feature.ProportionLbl);
+                    this.Put(GeologicCollectionTitle, null, feature.GeologicCollectionTitle, feature.L_ID, null, feature.ProportionLbl);
+                    this.Put(DescriptionPurpose, feature.DescriptionPurposeUri, feature.DescriptionPurposeLbl, feature.L_ID, null, feature.ProportionLbl);
+                    this.Put(GeologicUnit, feature.GeologicUnitNameUri, feature.GeologicUnitNameLbl, feature.L_ID, feature.GeologicUnitNameDescription, feature.ProportionLbl);
+                    this.Put(TectonicUnit, feature.TectonicUnitUri, feature.TectonicUnitLbl, feature.L_ID, feature.TectonicUnitDescription, feature.ProportionLbl);
+                    this.Put(Proportion, feature.ProportionUri, feature.ProportionLbl, feature.L_ID, null, feature.ProportionLbl);
+                    this.Put(TimeScale, feature.AgeUri, feature.AgeLbl, feature.L_ID, feature.AgeDescription, feature.ProportionLbl);
                     //zusätzlich für TimeScale
-                    put(Lithology, feature.LithologyUri, feature.LithologyLbl, feature.L_ID, feature.LithologyDescription, feature.ProportionLbl);
-                    put(Lithology, feature.LithologyUri, feature.LithologyLbl, feature.L_ID, feature.LithologyDescription, feature.ProportionLbl);
-                    put(EventProcess, feature.EventProcessUri, feature.EventProcessLbl, feature.L_ID, feature.EventProcessDescription, feature.ProportionLbl);
-                    put(EventEnvironment, feature.EventEnvironmentUri, feature.EventEnvironmentLbl, feature.L_ID, feature.EventEnvironmentDescription, feature.ProportionLbl);
+                    this.Put(Lithology, feature.LithologyUri, feature.LithologyLbl, feature.L_ID, feature.LithologyDescription, feature.ProportionLbl);
+                    this.Put(Lithology, feature.LithologyUri, feature.LithologyLbl, feature.L_ID, feature.LithologyDescription, feature.ProportionLbl);
+                    this.Put(EventProcess, feature.EventProcessUri, feature.EventProcessLbl, feature.L_ID, feature.EventProcessDescription, feature.ProportionLbl);
+                    this.Put(EventEnvironment, feature.EventEnvironmentUri, feature.EventEnvironmentLbl, feature.L_ID, feature.EventEnvironmentDescription, feature.ProportionLbl);
                     //zusätzlich für GeologicUnit
-                    put(DescriptionPurpose, feature.DescriptionPurposeUri, feature.DescriptionPurposeLbl, feature.L_ID, null, feature.ProportionLbl);
+                    this.Put(DescriptionPurpose, feature.DescriptionPurposeUri, feature.DescriptionPurposeLbl, feature.L_ID, null, feature.ProportionLbl);
                 }
                 //GeologicCollectionTitle.GroupBy(f => f.Value);               
             }
